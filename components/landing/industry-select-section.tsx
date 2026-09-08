@@ -169,7 +169,7 @@ export function IndustrySelectSection({
           <div className="flex h-full flex-col gap-5">
             <div className="flex-1 rounded-3xl border border-border bg-card p-6">
               <div className="flex items-baseline justify-between">
-                <p className="text-sm font-bold text-muted-foreground">
+                <p className="text-md font-bold text-muted-foreground">
                   핵심 혜택 · 사업영역
                 </p>
                 <p className={`text-3xl font-black ${card.accentText}`}>
