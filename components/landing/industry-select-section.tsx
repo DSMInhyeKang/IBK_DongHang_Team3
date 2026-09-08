@@ -5,6 +5,7 @@ import { Check } from 'lucide-react'
 import { CountUp } from '@/components/count-up'
 import {
   CARDS,
+  formatCompactWon,
   formatWon,
   getItemsForCard,
   ITEM_CAP,
@@ -84,16 +85,13 @@ function BenefitBlock({
       </span>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-bold text-ink">{item.label}</p>
-        <p className="text-xs text-muted-foreground">사업영역 2% 적립</p>
+        <p className="text-xs text-muted-foreground">
+          {formatCompactWon(item.example)} 이용 시 최대 {formatWon(example)}P
+        </p>
       </div>
       <span className={`text-sm font-black ${special ? 'text-point-foreground' : accentText}`}>
         2%
       </span>
-
-      {/* hover tooltip */}
-      <div className="pointer-events-none absolute -top-2 left-1/2 z-10 w-max -translate-x-1/2 -translate-y-full rounded-lg bg-ink px-3 py-2 text-xs font-medium text-background opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-        {formatWon(item.example)}원 이용 시 최대 {formatWon(example)}P
-      </div>
     </div>
   )
 }
@@ -168,8 +166,8 @@ export function IndustrySelectSection({
           </div>
 
           {/* 우측: 혜택 블록 */}
-          <div className="flex flex-col gap-5">
-            <div className="rounded-3xl border border-border bg-card p-6">
+          <div className="flex h-full flex-col gap-5">
+            <div className="flex-1 rounded-3xl border border-border bg-card p-6">
               <div className="flex items-baseline justify-between">
                 <p className="text-sm font-bold text-muted-foreground">
                   핵심 혜택 · 사업영역
@@ -178,7 +176,7 @@ export function IndustrySelectSection({
                   <CountUp value={2} suffix="%" format={false} />
                 </p>
               </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:gap-2.5">
                 {items.map((item) => (
                   <BenefitBlock
                     key={item.id}

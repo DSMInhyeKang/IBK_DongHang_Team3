@@ -134,3 +134,10 @@ export function totalReward(amounts: Record<string, number>): number {
 export function formatWon(value: number): string {
   return value.toLocaleString('ko-KR')
 }
+
+export function formatCompactWon(value: number): string {
+  if (value >= 10_000) {
+    return `${value / 10_000}만원`
+  }
+  return `${formatWon(value)}원`
+}
